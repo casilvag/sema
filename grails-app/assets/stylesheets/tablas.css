@@ -1,0 +1,13 @@
+#cotizacion tr th,td{
+    font-weight: 900;
+}
+
+#cotizacion tr td{
+    background: rgba(51,51,51,0.2);
+    border-bottom: 1px solid rgba(255,255,255,0.1)
+}
+
+#botonc{
+
+    background: #333;
+}

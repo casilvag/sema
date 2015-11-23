@@ -28,13 +28,13 @@
 					
 						<g:sortableColumn property="placa" title="${message(code: 'vehiculo.placa.label', default: 'Placa')}" />
 					
-						<g:sortableColumn property="modelo" title="${message(code: 'vehiculo.modelo.label', default: 'Modelo')}" />
-					
 						<g:sortableColumn property="color" title="${message(code: 'vehiculo.color.label', default: 'Color')}" />
 					
-						<g:sortableColumn property="marca" title="${message(code: 'vehiculo.marca.label', default: 'Marca')}" />
+						<g:sortableColumn property="chasis" title="${message(code: 'vehiculo.chasis.label', default: 'Chasis')}" />
 					
 						<th><g:message code="vehiculo.cliente.label" default="Cliente" /></th>
+					
+						<g:sortableColumn property="coberturaParcial" title="${message(code: 'vehiculo.coberturaParcial.label', default: 'Cobertura Parcial')}" />
 					
 					</tr>
 				</thead>
@@ -46,13 +46,13 @@
 					
 						<td>${fieldValue(bean: vehiculoInstance, field: "placa")}</td>
 					
-						<td>${fieldValue(bean: vehiculoInstance, field: "modelo")}</td>
-					
 						<td>${fieldValue(bean: vehiculoInstance, field: "color")}</td>
 					
-						<td>${fieldValue(bean: vehiculoInstance, field: "marca")}</td>
+						<td>${fieldValue(bean: vehiculoInstance, field: "chasis")}</td>
 					
 						<td>${fieldValue(bean: vehiculoInstance, field: "cliente")}</td>
+					
+						<td>${fieldValue(bean: vehiculoInstance, field: "coberturaParcial")}</td>
 					
 					</tr>
 				</g:each>

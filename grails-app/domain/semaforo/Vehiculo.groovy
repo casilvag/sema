@@ -5,6 +5,8 @@ class Vehiculo {
 	
 	String placa
 	String color
+	String motor
+	String chasis
 	Double valor
 	Double coberturaTotal
 	Double coberturaParcial
@@ -18,6 +20,6 @@ class Vehiculo {
 		color blank: false, nullable: false
     }
 	String toString() {
-		return "Placa: " + placa +", Modelo: " + modelo +", Color: " + color +", Marca: " + marca
+		return "Placa: " + placa +", Color: " + color
 	}
 }

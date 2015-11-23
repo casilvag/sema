@@ -41,15 +41,6 @@
 				</li>
 				</g:if>
 			
-				<g:if test="${vehiculoInstance?.modelo}">
-				<li class="fieldcontain">
-					<span id="modelo-label" class="property-label"><g:message code="vehiculo.modelo.label" default="Modelo" /></span>
-					
-						<span class="property-value" aria-labelledby="modelo-label"><g:fieldValue bean="${vehiculoInstance}" field="modelo"/></span>
-					
-				</li>
-				</g:if>
-			
 				<g:if test="${vehiculoInstance?.color}">
 				<li class="fieldcontain">
 					<span id="color-label" class="property-label"><g:message code="vehiculo.color.label" default="Color" /></span>
@@ -59,11 +50,11 @@
 				</li>
 				</g:if>
 			
-				<g:if test="${vehiculoInstance?.marca}">
+				<g:if test="${vehiculoInstance?.chasis}">
 				<li class="fieldcontain">
-					<span id="marca-label" class="property-label"><g:message code="vehiculo.marca.label" default="Marca" /></span>
+					<span id="chasis-label" class="property-label"><g:message code="vehiculo.chasis.label" default="Chasis" /></span>
 					
-						<span class="property-value" aria-labelledby="marca-label"><g:fieldValue bean="${vehiculoInstance}" field="marca"/></span>
+						<span class="property-value" aria-labelledby="chasis-label"><g:fieldValue bean="${vehiculoInstance}" field="chasis"/></span>
 					
 				</li>
 				</g:if>
@@ -73,6 +64,42 @@
 					<span id="cliente-label" class="property-label"><g:message code="vehiculo.cliente.label" default="Cliente" /></span>
 					
 						<span class="property-value" aria-labelledby="cliente-label"><g:link controller="cliente" action="show" id="${vehiculoInstance?.cliente?.id}">${vehiculoInstance?.cliente?.encodeAsHTML()}</g:link></span>
+					
+				</li>
+				</g:if>
+			
+				<g:if test="${vehiculoInstance?.coberturaParcial}">
+				<li class="fieldcontain">
+					<span id="coberturaParcial-label" class="property-label"><g:message code="vehiculo.coberturaParcial.label" default="Cobertura Parcial" /></span>
+					
+						<span class="property-value" aria-labelledby="coberturaParcial-label"><g:fieldValue bean="${vehiculoInstance}" field="coberturaParcial"/></span>
+					
+				</li>
+				</g:if>
+			
+				<g:if test="${vehiculoInstance?.coberturaTotal}">
+				<li class="fieldcontain">
+					<span id="coberturaTotal-label" class="property-label"><g:message code="vehiculo.coberturaTotal.label" default="Cobertura Total" /></span>
+					
+						<span class="property-value" aria-labelledby="coberturaTotal-label"><g:fieldValue bean="${vehiculoInstance}" field="coberturaTotal"/></span>
+					
+				</li>
+				</g:if>
+			
+				<g:if test="${vehiculoInstance?.motor}">
+				<li class="fieldcontain">
+					<span id="motor-label" class="property-label"><g:message code="vehiculo.motor.label" default="Motor" /></span>
+					
+						<span class="property-value" aria-labelledby="motor-label"><g:fieldValue bean="${vehiculoInstance}" field="motor"/></span>
+					
+				</li>
+				</g:if>
+			
+				<g:if test="${vehiculoInstance?.valor}">
+				<li class="fieldcontain">
+					<span id="valor-label" class="property-label"><g:message code="vehiculo.valor.label" default="Valor" /></span>
+					
+						<span class="property-value" aria-labelledby="valor-label"><g:fieldValue bean="${vehiculoInstance}" field="valor"/></span>
 					
 				</li>
 				</g:if>

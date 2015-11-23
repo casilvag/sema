@@ -6,7 +6,7 @@
         <g:message code="vehiculo.placa.label" default="Placa" />
         <span class="required-indicator">*</span>
     </label>
-    <g:textField name="placa" required="" value="${vehiculoInstance?.placa}"/>
+    <g:textField name="placa" pattern="${vehiculoInstance.constraints.placa.matches}" required="" value="${vehiculoInstance?.placa}"/>
 
 </div>
 

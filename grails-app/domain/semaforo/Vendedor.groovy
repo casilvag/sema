@@ -4,15 +4,16 @@ import groovy.json.*
 
 class Vendedor extends Usuario {
 
-	double salario
+	// double salario
 	static belongsTo = [empresa: Empresa]
 	static hasMany = [cita:Cita]
 
-    static constraints = { 
-		
-		salario blank:false
+    static constraints = {
+		// salario blank:false
+        cita nullable: true
     }
 	String toString() {
-		return "Salario: " + salario
+		return "Nombre: " + nombre
 	}
+
 }

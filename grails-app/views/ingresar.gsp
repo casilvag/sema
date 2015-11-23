@@ -65,9 +65,16 @@
 
     <h6>Ingresar</h6>
 
+    <g:if test="${request.message}">
+        <div class="alert alert-danger" role="alert" id="nonReg">
+            <div class="message" align="center" role="status">${request.message}</div>
+        </div>
+    </g:if>
+
     <p>
         <input type="text" name="correo" placeholder="Usuario o Email" required>
     </p>
+
     <p>
 
         <input type="password" name='password' placeholder="Contraseña" required>
@@ -77,8 +84,9 @@
         <input type="submit" name="submit" value="Iniciar Sesión">
     </p><br>
 
-    <a href="${createLink(uri: '/home')}">Volver</a>
+    <a href="${createLink(uri: '/')}">Volver</a>
 </g:form>
+
 
 
     <br><br><br><br>
@@ -90,7 +98,6 @@
             <a class="icon-gp" href="#"></a>
         </div>
     </div>
-
 
 </body>
 </html>

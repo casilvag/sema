@@ -6,7 +6,7 @@ class UrlMappings {
                 // apply constraints here
             }
         }
-
+        "/"(view:"/home")
         "/home"(view:"/home")
         "/equipo"(view: "/equipo")
         "/ingresar"(view: "/ingresar")

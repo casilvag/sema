@@ -3,6 +3,7 @@
 <div class="form-group">
 	<div class="fieldcontain ${hasErrors(bean: clienteInstance, field: 'nombre', 'error')} required">
 		<label for="nombre">
+			<span class="error nombre"></span>
 			<g:message code="cliente.nombre.label" default="Nombre" />
 			<span class="required-indicator">*</span>
 		</label>
@@ -17,6 +18,7 @@
 			<span class="required-indicator">*</span>
 		</label>
 		<g:textField class="form-control" name="usuario" maxlength="50" required="" value="${clienteInstance?.usuario}"/>
+		<span class="error usuario"></span>
 
 	</div>
 </div>
@@ -28,6 +30,7 @@
 			<span class="required-indicator">*</span>
 		</label>
 		<g:textField class="form-control" name="correo" maxlength="50" required="" value="${clienteInstance?.correo}"/>
+		<span class="error correo"></span>
 
 	</div>
 </div>
@@ -39,6 +42,7 @@
 			<span class="required-indicator">*</span>
 		</label>
 		<g:textField class="form-control" name="password" required="" value="${clienteInstance?.password}"/>
+		<span class="error password"></span>
 
 	</div>
 </div>
@@ -50,7 +54,7 @@
 			<span class="required-indicator">*</span>
 		</label>
 		<g:textField class="form-control" name="edad" type="number" min="18" value="${clienteInstance.edad}" required=""/>
-
+		<span class="error edad"></span>
 	</div>
 </div>
 
@@ -61,6 +65,7 @@
 			<span class="required-indicator">*</span>
 		</label>
 		<g:textField class="form-control" name="cedula" type="number" value="${clienteInstance.cedula}" required=""/>
+		<span class="error cedula"></span>
 
 	</div>
 </div>
@@ -72,5 +77,6 @@
 			<span class="required-indicator">*</span>
 		</label>
 		<g:textField class="form-control" name="tarjetaCredito" maxlength="50" required="" value="${clienteInstance?.tarjetaCredito}"/>
+		<span class="error tarjetaCredito"></span>
 	</div>
 </div>

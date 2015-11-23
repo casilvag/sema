@@ -67,5 +67,6 @@
             <g:paginate total="${vehiculoInstanceCount ?: 0}" />
         </div>
     </div>
+<g:link action="indexApp" controller="cita">solcitar cita de revision</g:link>
 </body>
 </html>

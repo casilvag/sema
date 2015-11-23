@@ -20,11 +20,8 @@
   <asset:stylesheet src="fontello.css"/>
   <asset:stylesheet src="estilos.css"/>
   <asset:stylesheet src="columnas.css"/>
-  <asset:stylesheet src="responsiveslides.css"/>
-  <asset:javascript src="responsiveslides.js"/>
-  <asset:stylesheet src="animate.css"/>
-  <asset:javascript src="wow.min.js"/>
   <asset:stylesheet src="default.css"/>
+  <asset:stylesheet src="equipoComplementos.css"/>
   <asset:stylesheet src="font-awesome.min.css"/>
 
 </head>
@@ -40,13 +37,13 @@
     <label class="icon-menu" for="menu-bar"></label>
 
     <nav class="menu">
-      <a href="${createLink(uri: '/home')}">Inicio</a>
+      <a href="${createLink(uri: '/')}">Inicio</a>
       <a href="${createLink(uri: '/whoWeAre')}">¿Quienes Somos?</a>
       <a href="${createLink(uri: '/equipo')}">Equipo</a>
       <g:if test="${session.cliente}" >
         <li><a href="#">${session.cliente.nombre}</a>
           <ul>
-            <li><a href="">Mi perfil</a></li>
+            <li><a href="/Semaforo/cliente/perfilusuario">Mi perfil</a></li>
             <li><a href="">Configuración</a></li>
             <li><g:link controller="cliente" action ="logout">Salir</g:link></li>
           </ul>
@@ -58,18 +55,19 @@
       </g:else>
     </nav>
 
+    
   </div>
 </header>
 <br><br><br>
 <section id="mostrar">
   <h2>Equipo</h2>
-  <p>Nuestro Equipo de Desarrollo de Semáforo, puedes encontrarlos en facebook...</p>
+  <p>Nuestro Equipo de Desarrollo de Semáforo, puedes encontrarlos en redes sociales...</p>
   <p>Tan solo debes parar el puntero sobre el área de la foto deseada... ¿Apuestos verdad? :)</p>
 </section>
 
 <div class="container">
 
-  <section class="main">
+  <section>
 
     <ul class="ch-grid">
       <li>
@@ -102,8 +100,8 @@
       <li>
         <div class="ch-item">
           <div class="ch-info">
-            <h3>Sergio Esteban Gavalán</h3>
-            <p>Desarrollo - Cargo<a href="https://www.facebook.com/stephen.feynman.9" target="_blank">Contacto en Facebook</a></p>
+            <h3>Sergio Esteban Gabalán</h3>
+            <p>Desarrollo - Cargo<a href="https://co.linkedin.com/in/seresgavillar" target="_blank">Contacto en LinkedIn</a></p>
           </div>
           <div class="ch-thumb ch-img-4"></div>
         </div>
@@ -126,7 +124,7 @@
   <div class="container">
     <p class="copy">Semáforo &copy; 2015</p>
     <div class="sociales">
-      <a class="icon-fb" href="#"></a>
+      <a class="icon-fb" href="https://www.facebook.com/SemaforoWeb/" target="_blank"></a>
       <a class="icon-twitter" href="#"></a>
       <a class="icon-gp" href="#"></a>
     </div>

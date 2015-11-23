@@ -16,16 +16,7 @@
 		<g:message code="vehiculo.placa.label" default="Placa" />
 		<span class="required-indicator">*</span>
 	</label>
-	<g:textField name="placa" required="" value="${vehiculoInstance?.placa}"/>
-
-</div>
-
-<div class="fieldcontain ${hasErrors(bean: vehiculoInstance, field: 'modelo', 'error')} required">
-	<label for="modelo">
-		<g:message code="vehiculo.modelo.label" default="Modelo" />
-		<span class="required-indicator">*</span>
-	</label>
-	<g:field name="modelo" type="number" value="${vehiculoInstance.modelo}" required=""/>
+	<g:textField name="placa" pattern="${vehiculoInstance.constraints.placa.matches}" required="" value="${vehiculoInstance?.placa}"/>
 
 </div>
 
@@ -38,12 +29,12 @@
 
 </div>
 
-<div class="fieldcontain ${hasErrors(bean: vehiculoInstance, field: 'marca', 'error')} required">
-	<label for="marca">
-		<g:message code="vehiculo.marca.label" default="Marca" />
+<div class="fieldcontain ${hasErrors(bean: vehiculoInstance, field: 'chasis', 'error')} required">
+	<label for="chasis">
+		<g:message code="vehiculo.chasis.label" default="Chasis" />
 		<span class="required-indicator">*</span>
 	</label>
-	<g:textField name="marca" required="" value="${vehiculoInstance?.marca}"/>
+	<g:textField name="chasis" required="" value="${vehiculoInstance?.chasis}"/>
 
 </div>
 
@@ -53,6 +44,42 @@
 		<span class="required-indicator">*</span>
 	</label>
 	<g:select id="cliente" name="cliente.id" from="${semaforo.Cliente.list()}" optionKey="id" required="" value="${vehiculoInstance?.cliente?.id}" class="many-to-one"/>
+
+</div>
+
+<div class="fieldcontain ${hasErrors(bean: vehiculoInstance, field: 'coberturaParcial', 'error')} required">
+	<label for="coberturaParcial">
+		<g:message code="vehiculo.coberturaParcial.label" default="Cobertura Parcial" />
+		<span class="required-indicator">*</span>
+	</label>
+	<g:field name="coberturaParcial" value="${fieldValue(bean: vehiculoInstance, field: 'coberturaParcial')}" required=""/>
+
+</div>
+
+<div class="fieldcontain ${hasErrors(bean: vehiculoInstance, field: 'coberturaTotal', 'error')} required">
+	<label for="coberturaTotal">
+		<g:message code="vehiculo.coberturaTotal.label" default="Cobertura Total" />
+		<span class="required-indicator">*</span>
+	</label>
+	<g:field name="coberturaTotal" value="${fieldValue(bean: vehiculoInstance, field: 'coberturaTotal')}" required=""/>
+
+</div>
+
+<div class="fieldcontain ${hasErrors(bean: vehiculoInstance, field: 'motor', 'error')} required">
+	<label for="motor">
+		<g:message code="vehiculo.motor.label" default="Motor" />
+		<span class="required-indicator">*</span>
+	</label>
+	<g:textField name="motor" required="" value="${vehiculoInstance?.motor}"/>
+
+</div>
+
+<div class="fieldcontain ${hasErrors(bean: vehiculoInstance, field: 'valor', 'error')} required">
+	<label for="valor">
+		<g:message code="vehiculo.valor.label" default="Valor" />
+		<span class="required-indicator">*</span>
+	</label>
+	<g:field name="valor" value="${fieldValue(bean: vehiculoInstance, field: 'valor')}" required=""/>
 
 </div>
 

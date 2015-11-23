@@ -1,7 +1,7 @@
 package semaforo
 
-import groovy.sql.Sql
 
+import groovy.sql.Sql
 import static org.springframework.http.HttpStatus.*
 import grails.transaction.Transactional
 import grails.converters.JSON
@@ -10,9 +10,8 @@ import grails.converters.JSON
 class VehiculoController {
     def dataSource
 
-    static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE", saveApp: "POST", updateApp: "PUT"]
+    static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
 
-    
     def getTipoVehiculo(){
         def query = "select distinct(tipo_vehiculo) as tipo from guia order by tipo asc"
         def sql = Sql.newInstance(dataSource)
@@ -67,56 +66,50 @@ class VehiculoController {
         sql.close()
         render datos as JSON
     }
-	
-	def getModelos(){
-		def query = "select * from valor_modelo where guia_id=${params.id}"
-		def sql = Sql.newInstance(dataSource)
+
+    def getModelos(){
+        def query = "select * from valor_modelo where guia_id=${params.id}"
+        def sql = Sql.newInstance(dataSource)
         def datos = []
         sql.eachRow(query){ row ->
-			datos.add([id : row.id, modelo : row.modelo, valor : row.valor])
-		}
-		render datos as JSON
-	}
-	
-	def getSeguros(){
-		def valorModelo = ValorModelo.findById(params.id);
-		def seguros = Seguro.findAllWhere(valorModelo : valorModelo)
-		def datos = []
-		seguros.each {
-			datos.add([
-				id : it.id,
-				valor : it.valor,
-				coberturaTotal : it.coberturaTotal,
-				deducibleTotal : it.deducibleTotal,
-				coberturaParcial : it.coberturaParcial,
-				deducibleParcial : it.deducibleParcial,
-				abogado : it.abogado,
-				vehiculoRemplazo : it.vehiculoRemplazo,
-				gastosTransporte : it.gastosTransporte,
-				grua : it.grua,
-				chofer : it.chofer,
-				responsabilidadCivil : it.responsabilidadCivil,
-				empresa : it.empresa.nombre	
-			])
-		}
-		render datos as JSON
-	}
+            datos.add([id : row.id, modelo : row.modelo, valor : row.valor])
+        }
+        render datos as JSON
+    }
+
+    def getSeguros(){
+        def valorModelo = ValorModelo.findById(params.id);
+        def seguros = Seguro.findAllWhere(valorModelo : valorModelo)
+        def datos = []
+        seguros.each {
+            datos.add([
+                    id : it.id,
+                    valor : it.valor,
+                    coberturaTotal : it.coberturaTotal,
+                    deducibleTotal : it.deducibleTotal,
+                    coberturaParcial : it.coberturaParcial,
+                    deducibleParcial : it.deducibleParcial,
+                    abogado : it.abogado,
+                    vehiculoRemplazo : it.vehiculoRemplazo,
+                    gastosTransporte : it.gastosTransporte,
+                    grua : it.grua,
+                    chofer : it.chofer,
+                    responsabilidadCivil : it.responsabilidadCivil,
+                    empresa : it.empresa.nombre
+            ])
+        }
+        render datos as JSON
+    }
 
     def createRequest(){
 
     }
 
-    def indexApp(Integer max) {
-        params.max = Math.min(max ?: 10, 100)
-        respond Vehiculo.list(params), model:[vehiculoInstanceCount: Vehiculo.count()]
-        // accion por defecto render index view con la lista de instancias
-    }
-
-    def createApp(){
+    def crearVehiculo(){
         respond new Vehiculo(params)
     }
 
-    def showApp(Vehiculo vehiculoInstance) {
+    def mostrarResumen(Vehiculo vehiculoInstance){
         respond vehiculoInstance
     }
 
@@ -128,72 +121,23 @@ class VehiculoController {
         }
 
         if (vehiculoInstance.hasErrors()) {
-            respond vehiculoInstance.errors, view:'createApp'
+            respond vehiculoInstance.errors, view:'create'
             return
         }
 
         vehiculoInstance.save flush:true
 
-        //respond vehiculoInstance, view: 'showApp'
         request.withFormat {
             form multipartForm {
                 flash.message = message(code: 'default.created.message', args: [message(code: 'vehiculo.label', default: 'Vehiculo'), vehiculoInstance.id])
-                redirect action: "showApp", id: vehiculoInstance.id //vehiculoInstance
+                //redirect vehiculoInstance
+                redirect action: "mostrarResumen", id: vehiculoInstance.id
             }
             '*' { respond vehiculoInstance, [status: CREATED] }
         }
     }
 
-    def editApp(Vehiculo vehiculoInstance) {
-        respond vehiculoInstance
-    }
-
-    @Transactional
-    def updateApp(Vehiculo vehiculoInstance) {
-        if (vehiculoInstance == null) {
-            notFound()
-            return
-        }
-
-        if (vehiculoInstance.hasErrors()) {
-            respond vehiculoInstance.errors, view:'editApp'
-            return
-        }
-
-        vehiculoInstance.save flush:true
-
-        //respond vehiculoInstance, view: 'editApp'
-        request.withFormat {
-            form multipartForm {
-                flash.message = message(code: 'default.updated.message', args: [message(code: 'Vehiculo.label', default: 'Vehiculo'), vehiculoInstance.id])
-                redirect action: "showApp", id: vehiculoInstance.id //vehiculoInstance
-            }
-            '*'{ respond vehiculoInstance, [status: OK] }
-        }
-    }
-
-    @Transactional
-    def deleteApp(Vehiculo vehiculoInstance) {
-
-        if (vehiculoInstance == null) {
-            notFound()
-            return
-        }
-
-        vehiculoInstance.delete flush:true
-
-        request.withFormat {
-            form multipartForm {
-                flash.message = message(code: 'default.deleted.message', args: [message(code: 'Vehiculo.label', default: 'Vehiculo'), vehiculoInstance.id])
-                redirect action:"indexApp", method:"GET"
-            }
-            '*'{ render status: NO_CONTENT }
-        }
-    }
-
-
-    //************************************************************************************
-    //scaffold
+    /*******************scaffold****************************/
     def index(Integer max) {
         params.max = Math.min(max ?: 10, 100)
         respond Vehiculo.list(params), model:[vehiculoInstanceCount: Vehiculo.count()]
@@ -231,7 +175,7 @@ class VehiculoController {
                 redirect vehiculoInstance
             }
             '*' { respond vehiculoInstance, [status: CREATED] }
-        } //esta accion es llamada desde create view
+        }//esta accion es llamada desde create view
         // busca una instancia con id provisto si no la hay..
         // si la hay verifica en busca de errores de validacion, si hay re-render la vista create
         //form es usado en el caso de envio de formularios, cuando el formulario en la create view
@@ -263,8 +207,8 @@ class VehiculoController {
                 redirect vehiculoInstance
             }
             '*'{ respond vehiculoInstance, [status: OK] }
-        }
-    }// response redirige a editview,
+        }// response redirige a editview,
+    }
 
     @Transactional
     def delete(Vehiculo vehiculoInstance) {

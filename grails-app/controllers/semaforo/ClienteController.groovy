@@ -14,6 +14,19 @@ class ClienteController {
         [clientes: clientes]
     }
 
+    def perfilusuario ={
+
+
+    }
+
+    def vistainicioeditar ={
+
+
+    }
+
+
+
+
     def register(){
         if (session.cliente != null){
             flash.message = "error, ya esta registrado"
@@ -25,14 +38,17 @@ class ClienteController {
     def login(){
         def cliente = Cliente.findByCorreoAndPassword(params.correo, params.password)
         if (cliente == null){
-            flash.message = "usuario no registrado"
-            redirect action: inicio
+            request.message = "usuario no registrado, por favor intente de nuevo o registrese"
+            //flash.message = "usuario no registrado"
+            //redirect action: inicio
+            render view: '../ingresar'
+
         }else{
-            flash.message = "inicio de sesion correcto ${cliente.correo}"
+            request.message = "inicio de sesion correcto ${cliente.correo}"
             session.cliente = cliente
             session.rol = "clienteApp"
             redirect action: inicio
-        }
+    }
 
     }
 

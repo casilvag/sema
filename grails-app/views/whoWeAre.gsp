@@ -40,13 +40,13 @@
         <label class="icon-menu" for="menu-bar"></label>
 
         <nav class="menu">
-            <a href="${createLink(uri: '/home')}">Inicio</a>
+            <a href="${createLink(uri: '/')}">Inicio</a>
             <a href="">¿Quienes Somos?</a>
-            <a ref="${createLink(uri: '/equipo')}">Equipo</a>
+            <a href="${createLink(uri: '/equipo')}">Equipo</a>
             <g:if test="${session.cliente}" >
                 <li><a href="#">${session.cliente.nombre}</a>
                     <ul>
-                        <li><a href="">Mi perfil</a></li>
+                        <li><a href="/Semaforo/cliente/perfilusuario">Mi perfil</a></li>
                         <li><a href="">Configuración</a></li>
                         <li><g:link controller="cliente" action ="logout">Salir</g:link></li>
                     </ul>
@@ -62,9 +62,10 @@
 </header>
 
 <ul class="cb-slideshow">
-    <li><span>1</span><div><h3>Misión</h3></div></li>
+    <li><span>1</span><div><h3>Misión</h3>
+    </div></li>
     <li><span>Image 02</span><div><h3>Visión</h3></div></li>
-    <li><span>Image 03</span><div><h3>Cómo Trabamos</h3></div></li>
+    <li><span>Image 03</span><div><h3>Cómo Trabajamos</h3></div></li>
     <li><span>Image 04</span><div><h3>Contacto</h3></div></li>
     <li><span>Image 05</span><div><h3>Otro campo</h3></div></li>
     <li><span>Image 06</span><div><h3>ultima chachara</h3></div></li>
