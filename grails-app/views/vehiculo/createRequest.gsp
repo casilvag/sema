@@ -38,6 +38,9 @@
 				<a href="${createLink(uri: '/whoWeAre')}">¿Quienes Somos?</a>
 				<a href="${createLink(uri: '/equipo')}">Equipo</a>
 				<g:if test="${session.cliente}" >
+                    <a href="${createLink(uri: '/vehiculo/createRequest')}">Solicitar seguro</a>
+                </g:if>
+				<g:if test="${session.cliente}" >
 					<li><a href="#">${session.cliente.nombre}</a>
 						<ul>
 							<li><a href="">Mi perfil</a></li>
@@ -206,8 +209,7 @@
 				<tr>
 					<td></td>
 					{{#each this}}
-					<!-- <td><button class="btn btn-primary" onclick="ComprarSeguro({{id}})">Comprar</button></td> -->
-					<td><a class="btn btn-success" id="botonc" href="${request.contextPath}/vehiculo/crearVehiculo?segId={{id}}">Comprar</a></td>
+					<td><a class="btn btn-success" id="botonc" href="${request.contextPath}/vehiculo/crearVehiculo?segId={{id}}&valorModelo={{@root.valorModelo}}">Comprar</a></td>
 					{{/each}}
 				</tr>
 			</table>
@@ -357,6 +359,7 @@
 			$.ajax({
 				url : '${request.contextPath}/vehiculo/getSeguros?id='+ valorModelo,
 				success : function(datos){
+					datos.valorModelo = valorModelo;
 					$("#seguros").removeClass();
 					$("#seguros").html(templateSeguros(datos));
 				}

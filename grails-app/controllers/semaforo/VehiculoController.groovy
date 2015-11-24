@@ -129,6 +129,13 @@ class VehiculoController {
 
         request.withFormat {
             form multipartForm {
+                new Cita(
+                    fecha : new Date(),
+                    estado : 'SIN_ASIGNACION',
+                    vehiculo : vehiculoInstance,
+                    seguro : vehiculoInstance.seguro,
+                    lugar : 'No asignado'
+                ).save(failOnError : true)
                 flash.message = message(code: 'default.created.message', args: [message(code: 'vehiculo.label', default: 'Vehiculo'), vehiculoInstance.id])
                 //redirect vehiculoInstance
                 redirect action: "mostrarResumen", id: vehiculoInstance.id

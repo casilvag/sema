@@ -41,6 +41,9 @@
             <a href="${createLink(uri: '/whoWeAre')}">¿Quienes Somos?</a>
             <a href="${createLink(uri: '/equipo')}">Equipo</a>
             <g:if test="${session.cliente}" >
+                <a href="${createLink(uri: '/vehiculo/createRequest')}">Solicitar seguro</a>
+            </g:if>
+            <g:if test="${session.cliente}" >
                 <li><a href="#">${session.cliente.nombre}</a>
                     <ul>
                         <li><a href="">Mi perfil</a></li>
@@ -61,6 +64,11 @@
 <br><br><br><br>
 
 <g:form url="[resource:vehiculoInstance, action:'saveApp']" >
+    <%
+        def valorModelo = semaforo.ValorModelo.get(params.valorModelo)
+    %>
+    <strong>Añada los datos de su ${valorModelo.guia.marca} ${valorModelo.guia.referencia1} ${valorModelo.guia.referencia2} ${valorModelo.guia.referencia3} modelo ${valorModelo.modelo}</strong>
+    <input
     <fieldset class="form">
         <div class="fieldcontain ${hasErrors(bean: vehiculoInstance, field: 'placa', 'error')} required">
             <label for="placa">

@@ -43,6 +43,9 @@
             <a href="${createLink(uri: '/whoWeAre')}">¿Quienes Somos?</a>
             <a href="${createLink(uri: '/equipo')}">Equipo</a>
             <g:if test="${session.cliente}" >
+                <a href="${createLink(uri: '/vehiculo/createRequest')}">Solicitar seguro</a>
+            </g:if>
+            <g:if test="${session.cliente}" >
                 <li><a href="#">${session.cliente.nombre}</a>
                     <ul>
                         <li><a href="">Mi perfil</a></li>
@@ -167,6 +170,13 @@
                 </li>
             </g:if>
 
+            <g:if test="${vehiculoInstance?.seguro?.valorModelo?.modelo}">
+                <li class="fieldcontain">
+                    <span class="property-label">Modelo :</span>
+                    <span class="property-value" aria-labelledby="motor-label">${vehiculoInstance?.seguro?.valorModelo?.modelo}</span>
+                </li>
+            </g:if>
+
             <br>
             <g:link class="btn btn-primary" action="edit" resource="${vehiculoInstance}"><g:message code="default.button.edit.label" default="Edit" /></g:link>
 
@@ -205,6 +215,15 @@
 
 <div class="container">
     <h3>Cita de revision</h3>
+    <%
+        def citas = semaforo.Cita.findAll{vehiculo == vehiculoInstance}
+    %>
+    
+    <g:each var="cita" in="${citas}">
+        <p>Fecha: ${cita.fecha}</p>
+        <p>Lugar: ${cita.lugar}</p>
+        <p>Estado: ${cita.estado}</p>
+    </g:each>
 </div>
 
 </body>

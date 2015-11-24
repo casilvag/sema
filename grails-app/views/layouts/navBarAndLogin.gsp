@@ -42,6 +42,9 @@
                 <ul class="nav navbar-nav">
                     <li><a href="${createLink(uri: '/somos')}">Quienes somos?</a></li>
                     <li><a href="${createLink(uri: '/equipo')}">Equipo</a></li>
+                    <g:if test="${session.cliente}" >
+                    <li><a href="${createLink(uri: '/vehiculo/createRequest')}">Solicitar seguro</a></li>
+                    </g:if>
                 </ul>
                 <g:if test="${session.cliente}" >
                     <ul class="nav navbar-nav pull-right">
